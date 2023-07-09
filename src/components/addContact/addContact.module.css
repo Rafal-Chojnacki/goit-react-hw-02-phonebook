@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+.phoneBook {
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
 .form { 
     display:inline-block;
     text-align: left;

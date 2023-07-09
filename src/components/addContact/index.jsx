@@ -4,10 +4,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { nanoid } from 'nanoid'
 import ContactForm from "../contactForm";
 import ContactList from "../contactList";
-
-
-
-
+import PropTypes from "prop-types";
 
 
 class AddContact extends Component {
@@ -47,5 +44,9 @@ class AddContact extends Component {
     );
   }
 }
+
+AddContact.propTypes = {
+  contacts: PropTypes.array,
+};
 
 export default AddContact;

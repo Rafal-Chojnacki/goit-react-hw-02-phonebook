@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import css from "./contactForm.module.css";
+import PropTypes from "prop-types";
 
 const INITIAL_STATE = {
   name: "",
@@ -70,5 +71,10 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.number,
+  };
 
 export default ContactForm

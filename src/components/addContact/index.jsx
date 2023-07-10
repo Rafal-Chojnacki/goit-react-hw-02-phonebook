@@ -6,33 +6,21 @@ import ContactForm from "../contactForm";
 import ContactList from "../contactList";
 import PropTypes from "prop-types";
 
+
 class AddContact extends Component {
   state = {
     contacts: [],
   };
 
-  componentDidMount() {
-    const storedContacts = localStorage.getItem("contacts");
-    if (storedContacts) {
-      this.setState({ contacts: JSON.parse(storedContacts) });
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-  }
-
   addContact = (newContact) => {
-    const existedContact = this.state.contacts.some(
-      (contact) =>
-        contact.name === newContact.name && contact.number === newContact.number
-    );
-    if (existedContact) {
-      Notify.warning('This contact already exists');
-      return;
+   let existedContact = this.state.contacts.some(
+    contact => contact.name === newContact.name && contact.number === newContact.number);
+    if (existedContact){
+    Notify.warning('This contact already exists');
+    return;  
     }
-    newContact.id = nanoid();
-    this.setState((prevState) => ({
+    newContact.id = nanoid()
+      this.setState((prevState) => ({
       contacts: [...prevState.contacts, newContact],
     }));
   };
@@ -43,19 +31,16 @@ class AddContact extends Component {
       updatedContacts.splice(index, 1);
       return { contacts: updatedContacts };
     });
-  };
-
+  }
   render() {
+   
     return (
       <div className={css.wrapper}>
-        <div className={css.phoneBook}>
-          <h1>Phonebook</h1>
-          <ContactForm addContact={this.addContact} />
+        <div className= {css.phoneBook}>
+        <h1>Phonebook</h1>
+        <ContactForm addContact={this.addContact} />
         </div>
-        <ContactList
-          contacts={this.state.contacts}
-          deleteContact={this.deleteContact}
-        />
+        <ContactList contacts={this.state.contacts} deleteContact={this.deleteContact}/>
       </div>
     );
   }

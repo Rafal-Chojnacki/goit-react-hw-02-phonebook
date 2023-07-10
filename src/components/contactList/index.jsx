@@ -15,23 +15,7 @@ class ContactList extends Component {
       }));
     };
   
-    saveContactsToLocalStorage = () => {
-      const contacts = this.props.contacts;
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-    };
-  
-    componentDidMount() {
-      const savedContacts = localStorage.getItem("contacts");
-      if (savedContacts) {
-        const contacts = JSON.parse(savedContacts);
-        this.setState({ contacts });
-      }
-    }
-  
-    componentDidUpdate() {
-      this.saveContactsToLocalStorage();
-    }
-
+    
     getContacts = () => {
       const filter = this.state.filter
       const contacts = this.props.contacts

@@ -25,3 +25,8 @@
     font-size: 20px;
     padding: 5px;
 }
+
+.deleteBtn {
+    background-color: bisque;
+    margin-left: 20px;
+}

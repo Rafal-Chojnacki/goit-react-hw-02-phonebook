@@ -30,6 +30,13 @@ class AddContact extends Component {
     }));
   };
 
+  deleteContact = (index) => {
+    this.setState((prevState) => {
+      const updatedContacts = [...prevState.contacts];
+      updatedContacts.splice(index, 1);
+      return { contacts: updatedContacts };
+    });
+  }
   render() {
    
     return (
@@ -38,8 +45,7 @@ class AddContact extends Component {
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
         </div>
-        
-        <ContactList contacts={this.state.contacts} />
+        <ContactList contacts={this.state.contacts} deleteContact={this.deleteContact}/>
       </div>
     );
   }
